@@ -1,0 +1,9 @@
+{{ '{% extends' }} "{{themeDir}}/root.theme" {{ '%}' }}
+{# Coment:
+
+A forma que usamos para extender aqui é diferente da normal, pois ao realizar o upload, o template passa por uma fase de pre-renderizaçao. Então, aqui usamos os comandos jinja de forma "literal" ou escapados, assim a pre-renderizacao pode substituir o {{themeDir}} adequadamente.
+
+
+Herdando os blocos do root.theme. Dessa maneira posso colocar todo o template no roor.theme, e mudar os detalhes especificos do large aqui.
+
+#}

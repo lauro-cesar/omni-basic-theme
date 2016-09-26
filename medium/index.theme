@@ -1,0 +1,6 @@
+{{ '{% extends' }} "{{themeDir}}/root.theme" {{ '%}' }}
+{# Coment:
+
+Herdando os blocos do root.theme. Dessa maneira posso colocar todo o template no roor.theme, e mudar os detalhes especificos do medium aqui.
+
+#}

@@ -1,0 +1,46 @@
+{% raw %}
+{% extends "2.1/omni.theme" %}
+{% import '2.1/omni.macros' as omniMacros with context %}
+
+{# Coment:
+
+Mais uma vez, utilizamos comandos jinja escapados, aqui, com a utilização do comando {%raw%} para escapar um grande bloco de código. Todo template precisa estar escapado, caso contrário será pré-processado no upload, resultando num arquivo em branco.
+
+
+O arquivo omni.theme contém os blocos jinja requeridos para um template. Acesse wiki para uma visão geral dos blocos.
+
+https://github.com/olarva/omni-basic-theme/wiki
+
+o arqivo omni.macro contém uma lista de macros utilizadas para renderizar informações contextuais
+
+Todos os templates precisam extender do omni.theme, com o omni.macros importados.
+
+Note que  o 2.1 representa a versão do aplicativo, ao fazer upload, selecione a mesma versão.
+
+#}
+
+
+{%- block OMNI_DOCUMENT_BODY -%}
+
+<div class="pages" id="#page-mainContent">
+
+<div class="myHeader">
+
+</div>
+
+<div class="pages" id="#page-catalogPage">
+	Meu catalogo
+</div>
+
+<div class="myFooter">
+Teste 
+</div>
+
+
+</div>
+{%- endblock -%}
+
+
+
+
+{% endraw %}
