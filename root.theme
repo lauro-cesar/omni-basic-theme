@@ -22,14 +22,16 @@ Note que  o 2.1 representa a versão do aplicativo, ao fazer upload, selecione a
 
 {%- block OMNI_DOCUMENT_BODY -%}
 
-<div class="pages" id="#page-mainContent">
+<div class="pages" id="page-mainContent">
 
 <div class="myHeader">
-
+meu header
 </div>
 
-<div class="pages" id="#page-catalogPage">
-	Meu catalogo
+<div class="pages" id="page-catalogPage">
+
+Criando a primeira página
+
 </div>
 
 <div class="myFooter">
