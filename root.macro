@@ -1,0 +1,11 @@
+{% raw %}
+
+{% macro logoAndName() %}
+<div class="storeLogo">
+<img width=128px src="{{shop.shopLogo}}">
+<hr>
+{{ shop.shopName }}
+</div>
+{% endmacro %}
+
+{% endraw %}

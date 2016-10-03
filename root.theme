@@ -1,3 +1,4 @@
+{{ '{% import' }} "{{themeDir}}/root.macro" {{ ' as themeMacros with context %}' }}
 {% raw %}
 {% extends "2.1/omni.theme" %}
 {% import '2.1/omni.macros' as omniMacros with context %}
@@ -11,7 +12,7 @@ O arquivo omni.theme contém os blocos jinja requeridos para um template. Acesse
 
 https://github.com/olarva/omni-basic-theme/wiki
 
-o arqivo omni.macro contém uma lista de macros utilizadas para renderizar informações contextuais
+o arquivo omni.macro contém uma lista de macros utilizadas para renderizar informações contextuais
 
 Todos os templates precisam extender do omni.theme, com o omni.macros importados.
 
@@ -25,17 +26,19 @@ Note que  o 2.1 representa a versão do aplicativo, ao fazer upload, selecione a
 <div class="pages" id="page-mainContent">
 
 <div class="myHeader">
-meu header
 </div>
+
 
 <div class="pages" id="page-catalogPage">
 
-Criando a primeira página
-
+<center>
+<h1> Bem vindo! Estamos em construção</h1>
+{{ themeMacros.logoAndName() }}
+</center>
 </div>
 
 <div class="myFooter">
-Teste 
+
 </div>
 
 

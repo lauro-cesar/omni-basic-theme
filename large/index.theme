@@ -1,4 +1,5 @@
-{{ '{% extends' }} "{{themeDir}}/root.theme" {{ '%}' }}
+{%raw%} {% extends  {% endraw %} "{{themeDir}}/root.theme" {% raw %} %} {% endraw %}
+
 {# Coment:
 A forma que usamos para extender aqui é diferente da normal, pois ao realizar o upload, o template passa por uma fase de pre-renderizaçao. Então, aqui usamos os comandos jinja de forma "literal" ou escapados, assim a pre-renderizacao pode substituir o {{themeDir}} adequadamente.
 
