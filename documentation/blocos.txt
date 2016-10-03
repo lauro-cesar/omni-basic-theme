@@ -25,12 +25,9 @@
 </title>
 
 
-
-
 {% block OMNI_DOCUMENT_BODY_START %}
 	<!-- Always use super() here -->
 	{{super()}} 
-
 	<!-- code below super --> 
 {% endblock %}
 
@@ -44,26 +41,15 @@
 {%- block OMNI_DOCUMENT_BODY_FOOTER -%}{%- endblock -%}
 
 
-
-
-
 {%- block OMNI_EXTRA_FOOTER_JS -%}{%- endblock -%}
 
 
 {%- block OMNI_DOCUMENT_BODY_STOP -%}
-
 <!-- code above super --> 
 <!-- Always use super() here -->
 {{super()}} 
-
-	
-
 {%- endblock -%}
 
-
-{%- block OMNI_DOCUMENT_HTML_STOP -%}
-</html>
-{%- endblock -%}
 
 
 
