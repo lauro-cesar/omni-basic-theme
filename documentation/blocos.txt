@@ -1,0 +1,71 @@
+
+{%- block OMNI_DOCUMENT_HTML_START -%}
+    <!DOCTYPE html>
+    <!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+    <html class="no-js" lang="en">    
+    <!-- Version 2.1 - {{appVersion}}  {{theme}} {{ viewSize}} -->
+{%- endblock -%}
+
+
+
+
+
+{%- block OMNI_DOCUMENT_EXTRA_HEAD -%}{%- endblock -%}
+
+{%- block OMNI_EXTRA_CSS -%}{%- endblock -%}
+
+{%- block OMNI_EXTRA_JS_HEADER -%}
+{%- endblock -%}
+
+{%- block OMNI_DOCUMENT_DESCRIPTION -%}{%- endblock -%}
+
+<title>
+        {%- block OMNI_DOCUMENT_TITLE -%} {{ shop['shopName']}} {%- endblock -%}
+        {%- block OMNI_DOCUMENT_SUB_TITLE -%} - {{ document_sub_title }} {%- endblock -%}
+</title>
+
+
+
+
+{% block OMNI_DOCUMENT_BODY_START %}
+	<!-- Always use super() here -->
+	{{super()}} 
+
+	<!-- code below super --> 
+{% endblock %}
+
+
+{%- block OMNI_DOCUMENT_BODY_HEADER -%}{%- endblock -%}
+
+
+{%- block OMNI_DOCUMENT_BODY -%}{%- endblock -%}
+
+
+{%- block OMNI_DOCUMENT_BODY_FOOTER -%}{%- endblock -%}
+
+
+
+
+
+{%- block OMNI_EXTRA_FOOTER_JS -%}{%- endblock -%}
+
+
+{%- block OMNI_DOCUMENT_BODY_STOP -%}
+
+<!-- code above super --> 
+<!-- Always use super() here -->
+{{super()}} 
+
+	
+
+{%- endblock -%}
+
+
+{%- block OMNI_DOCUMENT_HTML_STOP -%}
+</html>
+{%- endblock -%}
+
+
+
+
+
