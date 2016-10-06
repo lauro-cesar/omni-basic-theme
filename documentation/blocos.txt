@@ -12,7 +12,7 @@
 
 {%- block OMNI_DOCUMENT_EXTRA_HEAD -%}{%- endblock -%}
 
-{%- block OMNI_EXTRA_CSS -%}{%- endblock -%}
+{%- block OMNI_EXTRA_CSS_HEADER -%}{%- endblock -%}
 
 {%- block OMNI_EXTRA_JS_HEADER -%}
 {%- endblock -%}
