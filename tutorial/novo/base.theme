@@ -1,0 +1,242 @@
+{% raw %}
+{% extends "2.1/omni.theme" %}
+{% import "2.1/omni.macros" as omniMacros with context %}
+
+{%- block OMNI_EXTRA_FOOTER_JS -%}
+  {{super()}}
+
+  <script>
+  // Teu script vai aqui...
+  </script>
+
+{% endblock %}
+
+{% block OMNI_DOCUMENT_TITLE %}
+{{ shop.shopName }} {{ shop.shopSlogan}}
+{% endblock %}
+
+{% macro ad_view_template(cssClass="default") %}
+
+    <div class="adView {{cssClass}}">
+       <div class="thumbnail">
+      <a class="omni-page" href="#catalog/item/<%- adID %>">
+        <img width=128px height=128px src="/photos/best_image/<%- adID %>/128/" >
+      </a>
+      <div class="caption">
+        <div class="adInfo">
+          <h4>
+          <a class="omni-page" href="#catalog/item/<%- adID %>">
+          <%- adTitle %>
+          </a>
+          </h4>
+          <p><%- adBaitText %></p>
+        </div>
+        <p class="text-primary">
+        <h2 class="text-primary">
+          <%- itemPriceLabel %>
+        </h2>
+        </p>
+        <div>
+          <a class="btn btn-block btn-primary btn-lg buy_item" href="#catalog/additem/<%- adID %>" role="button">Adicionar ao pedido</a>
+          <a  class="btn btn-info btn-lg btn-block omni-page" href="#catalog/item/<%- adID %>">Ver mais detalhes</a>
+          <a class="btn btn-block btn-info shipping_calculator <%= (showShippingCalculator) ? 'show' : 'hidden'%> omni-page" href="#catalog/shipping-calc/<%- adID %>" >
+          Calcular frete
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+
+{% endmacro %}
+
+{%- block OMNI_DOCUMENT_EXTRA_HEAD -%}
+
+
+
+<script type="text/template" id="ad_view_template_default">
+{{ad_view_template(cssClass="default")}}
+</script>
+
+
+<script type="text/template" id="ad_view_template_top">
+{{ad_view_template(cssClass="top")}}
+</script>
+
+
+<script type="text/template" id="ad_view_template_bottom">
+{{ad_view_template(cssClass="bottom")}}
+</script>
+
+<script type="text/template" id="ad_view_template_left_sidebar">
+{{ad_view_template(cssClass="left_sidebar")}}
+</script>
+
+
+<script type="text/template" id="ad_view_template_right_sidebar">
+{{ad_view_template(cssClass="right_sidebar")}}
+</script>
+
+{% endblock %}
+
+
+{% block OMNI_DOCUMENT_BODY %}
+
+<div class="pages" id="page-mainContent">
+
+<div >
+
+{% if shop.links.navbar.widget %}
+
+	<ul class="navbar">
+	{{ shop.links.navbar.widget }}
+	</ul>
+
+{% endif %}
+
+
+</div>
+
+
+<div>
+
+{{ shop.shopName }}
+<hr>
+<img src="{{ shop.shopLogo }}" witdh=128px>
+<br>
+{{ shop.shopSlogan}}
+</div>
+
+
+
+<div class="pages" id="page-catalogPage">
+
+<h1>
+Meu catalogo
+</h1>
+    <div class="catalogContainerMain" id="catalogContainerMain" omni-catalog-limit=25>
+             <div class="catalogContainer"></div>
+              <div class="catalogControls">
+              
+              </div>
+
+    </div>
+
+
+
+</div>
+
+<div class="pages" id="page-homePage">
+	
+
+<!-- Tipos de catalogs: top, bottom, default, left_sidebar, right_sidebar  -->
+
+{% if shop.catalogs.top %}
+<div class="topCatalogs">
+  {% for cat in shop.catalogs.top %}
+  <h1>{{cat.catalogName}}</h1>
+  <h3>Topo</h3>
+  <div class="catalogContainertop" id="catalogContainer_{{cat.catalogID}}" omni-catalog-limit=10>
+           <div class="catalogContainer">             
+           </div>
+
+            <div class="catalogControls">
+            </div>
+
+  </div>
+  <hr>
+  {% endfor %}
+</div>
+{% endif %}
+
+              {% if shop.catalogs.default|length %}
+              <div class="defaultCatalogs">
+                  {% for cat in shop.catalogs.default %}
+                  <h1>{{cat.catalogName}}</h1>
+                  <h3>Default</h3>
+                  <div class="catalogContainerdefault" id="catalogContainer_{{cat.catalogID}}" omni-catalog-limit=4>
+                           <div class="catalogContainer"></div>
+                            <div class="catalogControls">
+                            </div>
+
+                  </div>
+                  <hr>
+                  {% endfor %}
+              </div>
+              {% endif %}
+
+
+
+              {% if shop.catalogs.right_sidebar %}
+              <div class="right_sidebarCatalogs">
+                  {% for cat in shop.catalogs.right_sidebar %}
+                  <h1>{{cat.catalogName}}</h1>
+                  <h3>Topo</h3>
+                  <div class="catalogContainer_right_sidebar" id="catalogContainer_{{cat.catalogID}}" omni-catalog-limit=4>
+                           <div class="catalogContainer">
+                             
+                           </div>
+                            <div class="catalogControls">
+                            <a  class="next_page ">Proximo</a>
+                            <a  class="previus_page ">Anterior</a>
+                            <a  class="reset_catalog ">Reset</a>
+                            </div>
+
+                  </div>
+                  <hr>
+                  {% endfor %}
+              </div>
+              {% endif %}
+
+
+              {% if shop.catalogs.left_sidebar %}
+              <div class="left_sidebarCatalogs">
+                  {% for cat in shop.catalogs.left_sidebar %}
+                  <h1>{{cat.catalogName}}</h1>
+                  <h3>Topo</h3>
+                  <div class="catalogContainerleft_sidebar" id="catalogContainer_{{cat.catalogID}}" omni-catalog-limit=4>
+                           <div class="catalogContainer"></div>
+                            <div class="catalogControls">
+                            </div>
+
+                  </div>
+                  <hr>
+                  {% endfor %}
+              </div>
+              {% endif %}
+
+
+
+
+
+              {% if shop.catalogs.bottom %}
+              <div class="bottomCatalogs">
+                  {% for cat in shop.catalogs.bottom %}
+                  <h1>{{cat.catalogName}}</h1>
+                  <h3>Bottom</h3>
+                  <div class="catalogContainerbottom" id="catalogContainer_{{cat.catalogID}}" omni-catalog-limit=4>
+                           <div class="catalogContainer"></div>
+                            <div class="catalogControls">
+                            
+                            </div>
+
+                  </div>
+                  <hr>
+                  {% endfor %}
+              </div>
+              {% endif %}
+
+<!-- end container home-page -->
+</div>
+
+
+</div>
+<div class="Up">
+<a class="scrolltoup">
+Subir
+</a>
+</div>
+{% endblock %}
+
+
+
+{% endraw %}

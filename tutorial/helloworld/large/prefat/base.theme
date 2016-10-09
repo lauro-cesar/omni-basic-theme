@@ -1,0 +1,7 @@
+{% raw %}
+{% for link in links %}
+<li>
+	<a href={{ links[link].href}} class="{{links[link].cssClass}}" itemid="{{links[link].id}}"> {{ links[link].label}}</a>
+ </li>
+{% endfor %}
+{% endraw %}

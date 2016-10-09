@@ -1,0 +1,119 @@
+{% raw %}
+{% extends "2.1/omni.theme" %}
+{% import "2.1/omni.macros" as omniMacros with context %}
+
+
+
+{% block OMNI_DOCUMENT_TITLE %}
+
+Bem vindo - {{shop.shopName}}
+
+{% endblock %}
+
+
+{% block OMNI_DOCUMENT_BODY %}
+
+
+<div class="pages" id="page-mainContent">
+
+	<div class=myHeader>
+		{% if shop.links.navbar.widget %}
+		navbar
+		<h2>{{shop.links.navbar.label }}</h2>
+		<ul>
+			{{ shop.links.navbar.widget }}
+		</ul>
+		<hr>
+		{% endif %}
+	</div>
+
+	<div class="myLogo">
+		<img src="{{shop.shopLogo}}" width=128px>
+		<h1>{{shop.shopName}}</h1>
+		<h3>
+			{{shop.shopSlogan}}
+		</h3>
+	</div>
+
+
+
+	<div class="pages" id=page-remoteContentPage></div>
+
+
+
+
+	<div class="pages" id=page-catalogPage>
+		<h1>Catalogo</h1>	
+	</div>
+
+
+	<div class="pages" id=page-homePage>
+		<h1>Home page</h1>
+	</div>
+
+	<div class=myFooter>
+
+	<hr>
+
+		{% if shop.links.tools.widget %}
+		tools
+		<h2>{{shop.links.tools.label }}</h2>
+		<ul>
+			{{ shop.links.tools.widget }}
+		</ul>
+		
+	{% endif %}
+
+	{% if shop.links.institutional.widget %}
+	institutional
+	<h2>{{shop.links.institutional.label }}</h2>
+	<ul>
+		{{ shop.links.institutional.widget }}
+	</ul>
+	
+	{% endif %}
+
+	{% if shop.links.department.widget %}
+	department
+	<h2>{{shop.links.department.label }}</h2>
+	<ul>
+		{{ shop.links.department.widget }}
+	</ul>
+	
+	{% endif %}
+
+
+
+	{% if shop.links.network.widget %}
+	network
+	<h2>{{shop.links.network.label }}</h2>
+	<ul>
+		{{ shop.links.network.widget }}
+	</ul>
+	
+	{% endif %}
+
+
+	{% if shop.links.admin.widget %}
+	admin
+	<h2>{{shop.links.admin.label }}</h2>
+	<ul>
+		{{ shop.links.admin.widget }}
+	</ul>
+	
+	{% endif %}
+	</div>
+
+</div>
+
+
+
+
+
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+{% endblock %}
+
+
+{% endraw %}
