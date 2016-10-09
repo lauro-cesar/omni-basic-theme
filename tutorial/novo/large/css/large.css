@@ -1,0 +1,12 @@
+#page-homePage {
+	border-style: dotted;
+	border-color: #000;
+	border-width: 2px
+	padding:20px;
+}
+
+div.adView {
+  width: 200px;
+  padding:20px;
+  background: url({{theme_cdn_dir}}/static/img/squares.gif) no-repeat center center; 
+}
