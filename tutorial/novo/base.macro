@@ -1,0 +1,58 @@
+{% raw %}
+{% import "2.1/omni.macros" as omniMacros with context %}
+
+
+{% macro ad_view_template(cssClass="default") %}
+
+    <div class="adView {{cssClass}}">
+       <div class="thumbnail">
+      <a class="omni-page" href="#catalog/item/<%- adID %>">
+        <img width=128px height=128px src="/photos/best_image/<%- adID %>/128/" >
+      </a>
+      <div class="caption">
+        <div class="adInfo">
+          <h4>
+          <a class="omni-page" href="#catalog/item/<%- adID %>">
+          <%- adTitle %>
+          </a>
+          </h4>
+          <p><%- adBaitText %></p>
+        </div>
+        <p class="text-primary">
+        <h2 class="text-primary">
+          <%- itemPriceLabel %>
+        </h2>
+        </p>
+        <div>
+          <a class="btn btn-block btn-primary btn-lg buy_item" href="#catalog/additem/<%- adID %>" role="button">Adicionar ao pedido</a>
+          <a  class="btn btn-info btn-lg btn-block omni-page" href="#catalog/item/<%- adID %>">Ver mais detalhes</a>
+          <a class="btn btn-block btn-info shipping_calculator <%= (showShippingCalculator) ? 'show' : 'hidden'%> omni-page" href="#catalog/shipping-calc/<%- adID %>" >
+          Calcular frete
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+{% endmacro %}
+
+{% macro containerCatalog(tipo="default",limit=25,titulo="Catalogo") %}
+
+{% if shop.catalogs[tipo] %}
+
+<div class="catalogs {{tipo}}">
+  {% for cat in shop.catalogs[tipo] %}
+  <h1>{{cat.catalogName}}</h1>
+  <h3>{{titulo}}</h3>
+  <div class="catalogContainer{{tipo}}" id="catalogContainer_{{cat.catalogID}}" omni-catalog-limit={{limit}}>
+           <div class="catalogContainer">             
+           </div>
+            <div class="catalogControls">
+            </div>
+  </div>
+  <hr>
+  {% endfor %}
+</div>
+{% endif %}
+{% endmacro %}
+
+{% endraw %}
