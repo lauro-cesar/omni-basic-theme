@@ -12,26 +12,45 @@
         'query':response.query,
         'category':response.category,
         'limit':response.limit,
+        'offset':response.offset
         'offset_previous':response.offset_previous,
         'offset_next':response.offset_next,
         'hasPrevious':response.hasPrevious,
-        'hasNext':response.hasNext,
-        'offset':response.offset
+        'hasNext':response.hasNext
       }
+
+  Catalogo responde aos eventos:
+
+  "click .next_page"        : "next_page",
+  "click .append_next_page" : "append_next_page", #Cria um efeito de scroll infinito
+  "click .previus_page"     : "previus_page",
+  "click .reset_catalog"    : "reset_catalog"
+
+
 -->
+{% if type =="default" %}
 
 <div class="previus <%= (hasPrevious) ? 'show' : 'hidden' %>">
-<a class="omni-page" href="#catalog/listing/<%- limit %>/<%- offset_previous %>/<%- category %>/<%- query %>"> Página anterior </a>
+<a class="previus_page"> Página anterior </a>
 </div>
 
 
 <div> Total de items encontrados: <%- total %></div>
 
-
 <div class="next <%= (hasNext) ? 'show' : 'hidden' %>">
-<a class="omni-page" href="#catalog/listing/<%- limit %>/<%- offset_next %>/<%- category %>/<%- query %>"> Próxima página </a>
+<a class="next_page"> Próxima página </a>
 </div>
 
+{% else %}
+<span class="previus <%= (hasPrevious) ? 'show' : 'hidden' %>">
+<a class="previus_page"> Página anterior </a>
+</span>
+<span> <b><%- total %></b></span>
+<span class="next <%= (hasNext) ? 'show' : 'hidden' %>">
+<a class="next_page"> Carregar mais </a>
+</span>
+
+{% endif %}
 
 {% endmacro %}
 
@@ -78,12 +97,8 @@
   <h1>{{cat.catalogName}}</h1>
   <h3>{{titulo}}</h3>
   <div class="catalogContainer{{tipo}}" id="catalogContainer_{{cat.catalogID}}" omni-catalog-limit={{limit}}>
-           
-           <div class="catalogContainer row"> 
-
-           </div>
-            <div class="catalogControls">
-            </div>
+           <div class="catalogControls"></div>
+           <div class="catalogContainer row"></div>
   </div>
   <hr>
   {% endfor %}

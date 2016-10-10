@@ -48,6 +48,9 @@
 </script>
 
 
+<script type="text/template" id="catalog_control_template_top">
+{{  myMacros.catalog_control_template(cssClass="top",type="top") }}
+</script>
 
 
 {%- endblock -%}
@@ -102,7 +105,8 @@
              <div class="catalogControls"></div>
              <hr>
              <div class="catalogContainer row"></div>
-             
+             <hr>
+             <div class="catalogControls"></div>
     </div>
 
 
@@ -113,15 +117,15 @@
 <div class="pages" id="page-homePage">
 	
 
-{{ myMacros.containerCatalog(tipo="top",limit=25,titulo="Catalogs Topo") }}
+{{ myMacros.containerCatalog(tipo="top",limit=1,titulo="Catalogs top") }}
 
-{{ myMacros.containerCatalog(tipo="default",limit=25,titulo="Catalogs Padrão") }}
+{{ myMacros.containerCatalog(tipo="default",limit=1,titulo="Catalogs Padrão") }}
 
-{{ myMacros.containerCatalog(tipo="right_sidebar",limit=25,titulo="Catalogs Direita") }}
+{{ myMacros.containerCatalog(tipo="right_sidebar",limit=1,titulo="Catalogs Direita") }}
 
-{{ myMacros.containerCatalog(tipo="left_sidebar",limit=25,titulo="Catalogs Esquerda") }}
+{{ myMacros.containerCatalog(tipo="left_sidebar",limit=1,titulo="Catalogs Esquerda") }}
 
-{{ myMacros.containerCatalog(tipo="bottom",limit=25,titulo="Catalogs rodapé")}}
+{{ myMacros.containerCatalog(tipo="bottom",limit=1,titulo="Catalogs rodapé")}}
 
 </div>
 
