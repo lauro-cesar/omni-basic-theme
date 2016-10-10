@@ -2,9 +2,43 @@
 {% import "2.1/omni.macros" as omniMacros with context %}
 
 
+
+
+{% macro catalog_control_template(cssClass="control",type="default") %}
+<!-- Campos disponiveis no controlador -->
+  <!--
+      objeto={
+        'total':response.total,
+        'query':response.query,
+        'category':response.category,
+        'limit':response.limit,
+        'offset_previous':response.offset_previous,
+        'offset_next':response.offset_next,
+        'hasPrevious':response.hasPrevious,
+        'hasNext':response.hasNext,
+        'offset':response.offset
+      }
+-->
+
+<div class="previus <%= (hasPrevious) ? 'show' : 'hidden' %>">
+<a class="omni-page" href="#catalog/listing/<%- limit %>/<%- offset_previous %>/<%- category %>/<%- query %>"> Página anterior </a>
+</div>
+
+
+<div> Total de items encontrados: <%- total %></div>
+
+
+<div class="next <%= (hasNext) ? 'show' : 'hidden' %>">
+<a class="omni-page" href="#catalog/listing/<%- limit %>/<%- offset_next %>/<%- category %>/<%- query %>"> Próxima página </a>
+</div>
+
+
+{% endmacro %}
+
+
 {% macro ad_view_template(cssClass="default") %}
 
-    <div class="adView {{cssClass}}">
+    <div class="adView {{cssClass}} col-lg-1 col-xs-1 col-md-1">
        <div class="thumbnail">
       <a class="omni-page" href="#catalog/item/<%- adID %>">
         <img width=128px height=128px src="/photos/best_image/<%- adID %>/128/" >
@@ -44,7 +78,9 @@
   <h1>{{cat.catalogName}}</h1>
   <h3>{{titulo}}</h3>
   <div class="catalogContainer{{tipo}}" id="catalogContainer_{{cat.catalogID}}" omni-catalog-limit={{limit}}>
-           <div class="catalogContainer">             
+           
+           <div class="catalogContainer row"> 
+
            </div>
             <div class="catalogControls">
             </div>
