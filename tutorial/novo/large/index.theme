@@ -3,8 +3,6 @@
 {% raw %}
 
 {%- block OMNI_EXTRA_CSS_HEADER -%}
-<link href="{{bootstrap_dir}}/css/bootstrap.css?nocache={{nocache}}" rel="stylesheet">
-
 <link href="{{theme_cdn_dir}}/large/css/large.css?nocache={{nocache}}" rel="stylesheet">
 {%- endblock -%}
 

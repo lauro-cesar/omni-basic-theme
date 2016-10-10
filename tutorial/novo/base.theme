@@ -3,6 +3,10 @@
 {% extends "2.1/omni.theme" %}
 {% import "2.1/omni.macros" as omniMacros with context %}
 
+
+
+
+
 {%- block OMNI_EXTRA_FOOTER_JS -%}
   {{super()}}
 
@@ -17,20 +21,14 @@
 {% endblock %}
 
 
-
-{%- block OMNI_DOCUMENT_EXTRA_HEAD -%}
-
-
-
-<script type="text/template" id="ad_view_template_default">
-{{myMacros.ad_view_template(cssClass="default")}}
-</script>
-
-
+{%- block OMNI_DOCUMENT_BODY_HEADER -%}
 <script type="text/template" id="ad_view_template_top">
 {{myMacros.ad_view_template(cssClass="top")}}
 </script>
 
+<script type="text/template" id="ad_view_template_default">
+{{myMacros.ad_view_template(cssClass="default")}}
+</script>
 
 <script type="text/template" id="ad_view_template_bottom">
 {{myMacros.ad_view_template(cssClass="bottom")}}
@@ -40,29 +38,52 @@
 {{myMacros.ad_view_template(cssClass="left_sidebar")}}
 </script>
 
-
 <script type="text/template" id="ad_view_template_right_sidebar">
 {{myMacros.ad_view_template(cssClass="right_sidebar")}}
 </script>
 
-{% endblock %}
+
+<script type="text/template" id="catalog_control_template_default">
+{{  myMacros.catalog_control_template(cssClass="default",type="default") }}
+</script>
+
+
+<script type="text/template" id="catalog_control_template_top">
+{{  myMacros.catalog_control_template(cssClass="top",type="top") }}
+</script>
+
+
+{%- endblock -%}
 
 
 {% block OMNI_DOCUMENT_BODY %}
 
-<div class="pages" id="page-mainContent">
+<div class="pages container-fluid" id="page-mainContent">
+
+<div class="searchEngine">
+<span class="input-group">
+  <input type="text" class="form-control searchInput" placeholder="Localize rapido">
+  <span class="input-group-btn">
+    <button class="btn searchButton btn-default" type="button">Pesquisar</button> 
+    <button class="btn resetButton btn-warning" type="button">
+    <span class="glyphicon glyphicon-refresh" aria-hidden="true">
+    </span> 
+    </button>
+  </span>
+</span>
+
+
+</div>
+
+
+
 
 <div >
-
 {% if shop.links.navbar.widget %}
-
 	<ul class="navbar">
 	{{ shop.links.navbar.widget }}
 	</ul>
-
 {% endif %}
-
-
 </div>
 
 
@@ -76,47 +97,47 @@
 </div>
 
 
-
+<!-- Meu catalogo com todos os produtos, a pesquisa funciona somente nesse catalogo -->
 <div class="pages" id="page-catalogPage">
 
-<h1>
-Meu catalogo
-</h1>
     <div class="catalogContainerMain" id="catalogContainerMain" omni-catalog-limit=25>
-             <div class="catalogContainer"></div>
-              <div class="catalogControls">
-              
-              </div>
-
+             
+             <div class="catalogControls"></div>
+             <hr>
+             <div class="catalogContainer row"></div>
+             <hr>
+             <div class="catalogControls"></div>
     </div>
 
 
-
 </div>
+<!-- End mainCatalog -->
+
 
 <div class="pages" id="page-homePage">
 	
 
+{{ myMacros.containerCatalog(tipo="top",limit=1,titulo="Catalogs top") }}
 
-{{ myMacros.containerCatalog(tipo="top",limit=25,titulo="Catalogs Topo") }}
+{{ myMacros.containerCatalog(tipo="default",limit=1,titulo="Catalogs Padrão") }}
 
-{{ myMacros.containerCatalog(tipo="default",limit=25,titulo="Catalogs Padrão") }}
+{{ myMacros.containerCatalog(tipo="right_sidebar",limit=1,titulo="Catalogs Direita") }}
 
-{{ myMacros.containerCatalog(tipo="right_sidebar",limit=25,titulo="Catalogs Direita") }}
+{{ myMacros.containerCatalog(tipo="left_sidebar",limit=1,titulo="Catalogs Esquerda") }}
 
-{{ myMacros.containerCatalog(tipo="left_sidebar",limit=25,titulo="Catalogs Esquerda") }}
-
-{{ myMacros.containerCatalog(tipo="bottom",limit=25,titulo="Catalogs rodapé")}}
-
-</div>
-
+{{ myMacros.containerCatalog(tipo="bottom",limit=1,titulo="Catalogs rodapé")}}
 
 </div>
-<div class="Up">
+
+
+
 <a class="scrolltoup">
 Subir
 </a>
+
+
 </div>
+
 {% endblock %}
 
 
